@@ -52,6 +52,5 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ## Credits
 > Discord [supesu#3118](https://pastebin.com/iCcz1L4K) &nbsp;&middot;&nbsp;
 > Github [@Supesu](https://github.com/supesu)
-<br>
 > Discord [Dablakbandit#0001](https://pastebin.com/i785cW1a) &nbsp;&middot;&nbsp;
 > Github [@AshleyThew](https://github.com/AshleyThew)
