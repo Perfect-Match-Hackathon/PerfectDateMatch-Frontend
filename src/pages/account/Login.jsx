@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { Button, Form, Jumbotron } from "react-bootstrap";
+import { useContext, useState } from "react";
+import { Button, Form, Jumbotron, Row, Col } from "react-bootstrap";
 import "./login.css";
 import fire from "../../fire.js";
+import { UserContext } from "../../components/UserContext";
 
 const Login = () => {
   const [form, setForm] = useState({
@@ -11,10 +12,8 @@ const Login = () => {
     password: "",
   });
   const [isRegisterForm, setRegisterForm] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  fire.auth().onAuthStateChanged((user) => {
-    return user ? setIsLoggedIn(true) : setIsLoggedIn(false);
-  });
+  const { currentUser, isLoggedIn } = useContext(UserContext);
+
   const updateForm = (e) => {
     e.persist();
     setForm((form) => ({
@@ -29,6 +28,7 @@ const Login = () => {
         .auth()
         .createUserWithEmailAndPassword(form.email, form.password)
         .then((user) => {
+          console.log("Signed up");
           console.log(user);
           fire.firestore.collection("createdUsers").doc(user.user.uid).set({
             firstName: form.firstName,
@@ -43,6 +43,10 @@ const Login = () => {
       await fire
         .auth()
         .signInWithEmailAndPassword(form.email, form.password)
+        .then((user) => {
+          console.log("Signed in");
+          console.log(user);
+        })
         .catch((error) => {
           console.log(error);
           console.log("Error Logging In with email and password");
@@ -71,45 +75,50 @@ const Login = () => {
             <h1>{isRegisterForm ? "Register" : "Log In"}</h1>
             <Form onSubmit={onSubmit}>
               {isRegisterForm && (
-                <Form.Group controlId="formBasicFirstName">
-                  <Form.Label>First Name</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="First Name"
-                    name="firstName"
-                    value={form.firstName}
-                    onChange={updateForm}
-                  />
-                </Form.Group>
-              )}
-              {isRegisterForm && (
-                <Form.Group controlId="formBasicLastName">
-                  <Form.Label>Last Name</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Last Name"
-                    name="lastName"
-                    value={form.lastName}
-                    onChange={updateForm}
-                  />
-                </Form.Group>
+                <>
+                  <Row>
+                    <Col>
+                      <Form.Group controlId="formBasicFirstName">
+                        <Form.Control
+                          type="text"
+                          placeholder="First Name"
+                          name="firstName"
+                          value={form.firstName}
+                          onChange={updateForm}
+                        />
+                      </Form.Group>
+                    </Col>
+
+                    <Col>
+                      <Form.Group controlId="formBasicLastName">
+                        <Form.Control
+                          type="text"
+                          placeholder="Last Name"
+                          name="lastName"
+                          value={form.lastName}
+                          onChange={updateForm}
+                        />
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                </>
               )}
               <Form.Group controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
                 <Form.Control
                   type="email"
-                  placeholder="Enter email"
+                  placeholder="Email Address"
                   name="email"
                   value={form.email}
                   onChange={updateForm}
                 />
-                <Form.Text className="text-muted">
-                  We'll never share your email with anyone else.
-                </Form.Text>
+                {isRegisterForm && (
+                  <Form.Text className="text-muted">
+                    We'll never share your email with anyone else.
+                  </Form.Text>
+                )}
               </Form.Group>
 
               <Form.Group controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
                 <Form.Control
                   type="password"
                   placeholder="Password"
@@ -118,19 +127,24 @@ const Login = () => {
                   onChange={updateForm}
                 />
               </Form.Group>
-
-              <Button variant="primary" type="submit">
-                {isRegisterForm ? "Register" : "Log In"}
-              </Button>
-              <Form.Text className="text-muted">
-                {isRegisterForm ? "Already a member?" : "New here?"}
-              </Form.Text>
-              <Button
-                variant="primary"
-                onClick={(e) => setRegisterForm(!isRegisterForm)}
-              >
-                {isRegisterForm ? "Log In" : "Sign Up"}
-              </Button>
+              <Row>
+                <Col>
+                  <Button variant="primary" type="submit">
+                    {isRegisterForm ? "Register" : "Log In"}
+                  </Button>
+                </Col>
+                <Col>
+                  <Button
+                    variant="primary"
+                    onClick={(e) => setRegisterForm(!isRegisterForm)}
+                  >
+                    {isRegisterForm ? "Log In" : "Sign Up"}
+                  </Button>
+                  <Form.Text className="text-muted">
+                    {isRegisterForm ? "Already a member?" : "New here?"}
+                  </Form.Text>
+                </Col>
+              </Row>
             </Form>
           </>
         )}

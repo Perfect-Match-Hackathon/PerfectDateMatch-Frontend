@@ -6,6 +6,7 @@ import Login from "./pages/account/Login";
 import Cards from "./pages/cards/Cards";
 import LandingPage from "./pages/landingpage/LandingPage";
 import Test from "./pages/Test";
+import UserProvider from "./components/UserContext";
 
 function App() {
   return (
