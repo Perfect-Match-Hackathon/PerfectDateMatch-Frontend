@@ -1,6 +1,6 @@
 <h1 align="center">
 	<br>
-	<a href="https://i.imgur.com/jSRNkXH.jpg" target="_blank" alt="Link to application"><img src="" alt="Random image" width="200"></a>
+	<a href="#" target="_blank" alt="Link to application"><img src="https://i.imgur.com/jSRNkXH.jpg" alt="Random image" width="200"></a>
 	<br>
 	<br>
 	<p>Frontend for "DateMeet"</p>
