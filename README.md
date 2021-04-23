@@ -11,8 +11,8 @@
 
 <p align="center">
 		<img src="https://img.shields.io/badge/React%20Version-%5E17.0.1-lightgrey">
-		<img src="https://img.shields.io/github/package-json/v/Perfect-Match-Hackathon/PerfectDateMatch-Frontend/next?label=Version&logoColor=blueviolet"> 		
-		<img src="https://img.shields.io/github/package-json/v/Perfect-Match-Hackathon/PerfectDateMatch-Frontend/master?label=master%20version&logoColor=lightgrey">
+		<img src="https://img.shields.io/github/package-json/v/Perfect-Match-Hackathon/PerfectDateMatch-Frontend/next?label=Version&color=blueviolet"> 		
+		<img src="https://img.shields.io/github/package-json/v/Perfect-Match-Hackathon/PerfectDateMatch-Frontend/master?label=Master%20version&color=lightgrey">
 </p>
 
 <p align="center">
