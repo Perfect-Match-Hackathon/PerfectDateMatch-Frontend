@@ -1,7 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Inter');
+
 .landing{
     width:100%;
     height:100%;
     padding-top: 30px;
+}
+
+*{
+    font-family: 'Inter'!important;
 }
 
 .landing h1{
