@@ -37,8 +37,8 @@ const NavigationBar = () => {
           <Nav.Link as={Link} to="/cards">
             Cards
           </Nav.Link>
-          <Nav.Link as={Link} to="/register">
-            Register
+          <Nav.Link as={Link} to="/login">
+            Login
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>
