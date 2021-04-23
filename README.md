@@ -1,6 +1,6 @@
 <h1 align="center">
 	<br>
-	<a href="#" target="_blank" alt="Link to application"><img src="https://i.imgur.com/jSRNkXH.jpg" alt="Random image" width="200"></a>
+	<a height="200" href="#" target="_blank" alt="Link to application"><img src="https://i.imgur.com/jSRNkXH.jpg" alt="Random image" width="200"></a>
 	<br>
 	<br>
 	<p>DateMeet</p>
@@ -16,5 +16,33 @@
 </p>
 
 <p align="center">
-		TODO: WRITE THE README
+		<a href="#demo">Demo</a>•
+		<a href="#how-to-use">How To Use</a>•
+		<a href="#key-features">Key Features</a>
+		<a href="#local-instance">Local Instance</a>•
+		<a href="#license">License</a>•
+		<a href="#credits">Credits</a>
 </p>
+
+### Demo
+// TODO: Record demo, upload demo to youtube (unlisted) & copy link here
+
+### How To Use
+// TODO: write short introduction to application and instructions on how to use (with screenshots)
+
+### Key Features
+// TOOD: Once finished, relay all key features into this area.
+
+### Local Instance
+// TODO: Once finished, write how to get a local instance up and running (dont forget firebase)
+
+### License
+<p> <strong>The MIT License</strong><br>
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.       
+</p>
+
+### Credits
+> Discord [supesu#3118](https://pastebin.com/iCcz1L4K) &nbsp;&middot;&nbsp;
+> Github [@Supesu](https://github.com/supesu) &nbsp;&middot;&nbsp;
+> Discord [Dablakbandit#0001](https://pastebin.com/i785cW1a) &nbsp;&middot;&nbsp;
+> Github [@AshleyThew](https://github.com/AshleyThew)
