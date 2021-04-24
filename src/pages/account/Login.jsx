@@ -5,7 +5,7 @@ import { ReactComponent as LogoLarge } from "../../assets/logo-large.svg";
 import { authenticate, validateSignIn, UserContext } from "../../utils";
 
 class Login extends Component {
-  static userContext = UserContext;
+  static contextType = UserContext;
 
   constructor(props) {
     super(props);
@@ -77,7 +77,7 @@ class Login extends Component {
 
   render() {
     // eslint-disable-next-line
-    const { currentUser, isLoggedIn } = Login.userContext;
+    const { currentUser, isLoggedIn } = this.context;
     //? if attempting to reroute
     if (this.state.redirect) {
       return <Redirect to={this.state.redirect} />;
