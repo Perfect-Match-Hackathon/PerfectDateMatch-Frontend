@@ -30,7 +30,7 @@
   },
   "scripts": {
     "build:style": "tailwind build src/styles/index.css -o src/styles/tailwind.css",
-    "start": "node server.js",
+    "start": "npm run build && node server.js",
     "dev": "craco start",
     "build": "craco build",
     "test": "craco test",
