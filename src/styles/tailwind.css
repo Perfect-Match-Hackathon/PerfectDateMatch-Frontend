@@ -14546,6 +14546,16 @@ p {
   line-height: 1.6;
 }
 
+.px-14 {
+  padding-left: 12rem !important;
+  padding-right: 12rem !important;
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
+}
+
 h1,
 h2,
 h3,
@@ -14571,6 +14581,83 @@ body,
 * {
   padding: 0;
   margin: 0;
+}
+
+.form__group {
+  position: relative;
+  padding: 1.5vh 0 0;
+  margin-top: 1vh;
+}
+
+.form__field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 0.1vh solid #5c5c5c;
+  outline: 0;
+  font-size: 1.3rem;
+  color: #fff;
+  background: transparent;
+}
+
+.form__field::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.form__field:-ms-input-placeholder {
+  color: transparent;
+}
+
+.form__field::-ms-input-placeholder {
+  color: transparent;
+}
+
+.form__field::placeholder {
+  color: transparent;
+}
+
+.form__field:-ms-input-placeholder ~ .form__label {
+  font-size: 1.3rem;
+  cursor: text;
+  top: 0px;
+}
+
+.form__field:placeholder-shown ~ .form__label {
+  font-size: 1.3rem;
+  cursor: text;
+  top: 0px;
+}
+
+.error {
+  margin-top: .5vh;
+  color: var(--color-accent-disabled)
+}
+
+.link {
+  color: var(--color-accent-disabled)
+}
+
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #9b9b9b;
+}
+
+.form__field:focus {
+  padding-bottom: .8vh;
+  font-weight: 700;
+  border-width: 3px;
+  border-image-slice: 1;
+}
+
+/* reset input */
+
+.form__field:required,
+.form__field:invalid {
+  box-shadow: none;
 }
 
 @media (min-width: 640px){
