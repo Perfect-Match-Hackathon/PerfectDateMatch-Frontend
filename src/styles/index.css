@@ -32,6 +32,15 @@ p {
   line-height: 1.6;
 }
 
+.px-14 {
+  padding-left: 12rem !important;
+  padding-right: 12rem !important;
+}
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
+}
+
 h1,
 h2,
 h3,
@@ -61,7 +70,7 @@ body,
 
 .form__group {
   position: relative;
-  padding: 1.2vh 0 0;
+  padding: 1.5vh 0 0;
   margin-top: 1vh;
 }
 
@@ -69,7 +78,7 @@ body,
   font-family: inherit;
   width: 100%;
   border: 0;
-  border-bottom: .2vh solid #5c5c5c;
+  border-bottom: 0.1vh solid #5c5c5c;
   outline: 0;
   font-size: 1.3rem;
   color: #fff;
@@ -83,7 +92,16 @@ body,
 .form__field:placeholder-shown ~ .form__label {
   font-size: 1.3rem;
   cursor: text;
-  top: 20px;
+  top: 0px;
+}
+
+.error {
+  margin-top: .5vh;
+  color: var(--color-accent-disabled)
+}
+
+.link {
+  color: var(--color-accent-disabled)
 }
 
 .form__label {
@@ -96,12 +114,11 @@ body,
 }
 
 .form__field:focus {
-  padding-bottom: 6px;
+  padding-bottom: .8vh; 
   font-weight: 700;
   border-width: 3px;
   border-image-slice: 1;
 }
-
 
 /* reset input */
 .form__field:required,
