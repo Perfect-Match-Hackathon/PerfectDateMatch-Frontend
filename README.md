@@ -1,166 +1,56 @@
-# Simple React Bootstrap Template Theme
+<h1 align="center">
+	<br>
+	<a height="200" href="#" target="_blank" alt="Link to application"><img src="https://i.imgur.com/jSRNkXH.jpg" alt="Random image" width="200"></a>
+	<br>
+	<br>
+	<p>DateMatch</p>
+</h1>
 
-Purpose is to skip the setup process when using Bootstrap and using one of the premade themes along with React Router. Sometimes I find myself repeating the same process in hobby projects or hackathons. `Pages` is where you put the page files and `Components` is where you put the UI files like Navigation Bar or Cards. Folder Structure is optional and could be customized to your liking. This could be also for beginners learning React where they want to focus on functionality first then styling later. Css files could be with their repspective page or create a new folder `Styles`.
+<h4 align="center">A open source tinder clone created for the <a href="#" target="_blank" alt="Link to skills me">SkillsMe</a> Perfect Match Hackathon</h4>
 
-[sample link](https://minty-template.netlify.app/)
+<p align="center">
+		<img src="https://img.shields.io/badge/React%20Version-%5E17.0.1-lightgrey">
+		<img src="https://img.shields.io/github/package-json/v/Perfect-Match-Hackathon/PerfectDateMatch-Frontend/next?label=Version&color=blueviolet"> 		
+		<img src="https://img.shields.io/github/package-json/v/Perfect-Match-Hackathon/PerfectDateMatch-Frontend/master?label=Master%20version&color=lightgrey">
+</p>
 
-git clone
+<p align="center">
+		<a href="#demo">Demo</a> •
+		<a href="#how-to-use">How To Use</a> •
+		<a href="#key-features">Key Features</a> •
+		<a href="#local-instance">Local Instance</a> •
+		<a href="#license">License</a> •
+		<a href="#credits">Credits</a>
+</p>
 
-`git clone https://github.com/redxzeta/react-bootstrap-watch-template.git`
+## Demo
+// TODO: Record demo, upload demo to youtube (unlisted) & copy link here
 
-OR
+## How To Use
+// TODO: write short introduction to application and instructions on how to use (with screenshots)
 
-Use Template from above
+## Key Features
+// TOOD: Once finished, relay all key features into this area.
 
-To Change themes
+## Local Instance
+// TODO: Once finished, write how to get a local instance up and running (dont forget firebase)
 
-`index.js`
+## License
 
-```
-import React from "react";
-import ReactDOM from "react-dom";
-import "bootswatch/dist/minty/bootstrap.min.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
+<p> 
+<strong>The MIT License</strong><br>
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById("root")
-);
-```
+Copyright 2021 DateMatch
 
-Change minty into any of the names mentioned in bootswatch ie `lumen`
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-`import "bootswatch/dist/lumen/bootstrap.min.css"; `
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-Using the regular
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+</p>
 
-`import 'bootstrap/dist/css/bootstrap.min.css';`
-
-[More Themes](https://bootswatch.com/)
-
-# Adding Pages 
-
-`App.js`
-Add a new route in `<Switch>` like from below and put in the component u want to use for the page
-
-more info here on [React Router Dom](https://reactrouter.com/web/guides/quick-start)
-
-```
-<Switch>
-  <Route path="/cards">
-    <Cards />
-  </Route>
-  <Route path="/test">
-    <Test />
-  </Route>
-  <Route path="/">
-    <LandingPage />
-  </Route>
-</Switch>
-```
-
-# Helpful Links 
-
-[React Bootstrap](https://react-bootstrap.github.io/getting-started/introduction)
-
-[axios](https://github.com/axios/axios)
-
-[React Concepts](https://reactjs.org/docs/hello-world.html)
-
-[React Hooks](https://reactjs.org/docs/hooks-intro.html)
-
-[React Router Dom](https://reactrouter.com/web/guides/quick-start)
-
-[es6 js](https://www.javascripttutorial.net/es6/)
-
-
-# Deployment
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/redxzeta/react-bootstrap-watch-template)
-
-Clicking on the button deploys the site on your netlify account and clones it to your github repo
-
-I recommend signing up with [Netlify](https://www.netlify.com/) to deploy your site
-
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-### `npm install --global yarn`
-If you do not have yarn installed. But u could use npm as an alterntaive.
-
-### `yarn install`
-
-Installs node modules required to run the app.
-
-
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Credits
+> Discord [supesu#3118](https://pastebin.com/iCcz1L4K) &nbsp;&middot;&nbsp;
+> Github [@Supesu](https://github.com/supesu) &nbsp;&middot;&nbsp;
+> Discord [Dablakbandit#0001](https://pastebin.com/i785cW1a) &nbsp;&middot;&nbsp;
+> Github [@AshleyThew](https://github.com/AshleyThew)
