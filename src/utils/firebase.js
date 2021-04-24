@@ -30,7 +30,10 @@ export function attachAuthListener(handler) {
  * @param { function } callback
  */
 export async function createNewUser(email, password, callback) {
-  await firebase.auth().createUserWithEmailAndPassword(email, password).then(callback);
+  await firebase
+    .auth()
+    .createUserWithEmailAndPassword(email, password)
+    .then(callback);
 }
 
 /**
@@ -39,7 +42,11 @@ export async function createNewUser(email, password, callback) {
  * @param { string } password
  */
 export async function authenticate(email, password, callback, errhandler) {
-  await firebase.auth().signInWithEmailAndPassword(email, password).then(callback).catch(errhandler);
+  await firebase
+    .auth()
+    .signInWithEmailAndPassword(email, password)
+    .then(callback)
+    .catch(errhandler);
 }
 
 /**
@@ -56,17 +63,25 @@ export const UserContext = React.createContext();
 export const UserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userToken, setUserToken] = useState("");
+
   const contextValue = {
     currentUser,
     isLoggedIn,
+    userToken,
   };
-  firebase.auth().onAuthStateChanged((user) => {
-    setCurrentUser(user);
-    if (user) {
-      console.log(user.getIdToken());
-    }
-    return user ? setIsLoggedIn(true) : setIsLoggedIn(false);
-  });
+  
+  React.useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      setCurrentUser(user);
+      if (user) {
+        console.log("logged")
+        setUserToken(user.getIdToken());
+      }
+      return user ? setIsLoggedIn(true) : setIsLoggedIn(false);
+    });
+  }, []);
+
   return (
     <UserContext.Provider value={contextValue}>{children}</UserContext.Provider>
   );
