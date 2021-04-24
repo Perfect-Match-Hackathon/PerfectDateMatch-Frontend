@@ -18,7 +18,7 @@ export function init() {
  * @return { void }
  */
 export function attachAuthListener(handler) {
-  return firebase.auth.onAuthStateChange((user) => {
+  return firebase.auth().onAuthStateChange((user) => {
     handler(user);
   });
 }
@@ -27,9 +27,10 @@ export function attachAuthListener(handler) {
  * Param MUST be validated beforehand.
  * @param { string } email
  * @param { string } password
+ * @param { function } callback
  */
-export async function createNewUser(email, password) {
-  await firebase.auth.createUserWithEmailAndPassword(email, password);
+export async function createNewUser(email, password, callback) {
+  await firebase.auth().createUserWithEmailAndPassword(email, password).then(callback);
 }
 
 /**
@@ -37,8 +38,8 @@ export async function createNewUser(email, password) {
  * @param { string } email
  * @param { string } password
  */
-export async function authenticate(email, password) {
-  await firebase.auth().signInWithEmailAndPassword(email, password);
+export async function authenticate(email, password, callback, errhandler) {
+  await firebase.auth().signInWithEmailAndPassword(email, password).then(callback).catch(errhandler);
 }
 
 /**

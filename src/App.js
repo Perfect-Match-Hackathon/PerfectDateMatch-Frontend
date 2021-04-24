@@ -9,8 +9,17 @@ function App() {
       <Router>
         <Container>
           <Switch>
-            <Route path="/">
-              <LandingPage />
+            <Route path="/login">
+              <LandingPage isLogin={true} />
+            </Route>
+            <Route path="/register">
+              <LandingPage isLogin={false} />
+            </Route>
+            <Route path="/app">
+              <p>pog</p>
+            </Route>
+            <Route exact path="/">
+              <LandingPage isLogin={true} />
             </Route>
           </Switch>
         </Container>
