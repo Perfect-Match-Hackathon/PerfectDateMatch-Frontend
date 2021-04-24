@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "bootswatch/dist/journal/bootstrap.min.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { UserProvider, init } from "./utils";
+import './styles/tailwind.css';
 
-init()
+init();
 
 ReactDOM.render(
   <React.StrictMode>

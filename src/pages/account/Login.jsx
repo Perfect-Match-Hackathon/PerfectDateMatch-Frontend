@@ -1,6 +1,5 @@
 import { Component } from "react";
 import { Redirect } from "react-router-dom";
-import { Button, Form, Jumbotron, Row, Col } from "react-bootstrap";
 
 import { authenticate, validate, UserContext } from "../../utils";
 
@@ -82,50 +81,11 @@ class Login extends Component {
     });
 
     return (
-      <div className="login__page">
-        <Jumbotron>
-          <>
-            <h1>Log In</h1>
-            <Form onSubmit={this.handleSubmit}>
-              <Form.Group controlId="formBasicEmail">
-                <Form.Control
-                  type="email"
-                  placeholder="Email Address"
-                  name="email"
-                  value={this.state.email}
-                  onChange={this.handleInputChange}
-                />
-              </Form.Group>
-              {emailErrorMessage && (
-                <p className="error">{emailErrorMessage}</p>
-              )}
-
-              <Form.Group controlId="formBasicPassword">
-                <Form.Control
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                  value={this.state.password}
-                  onChange={this.handleInputChange}
-                />
-                {passwordErrorMessage && (
-                  <p className="error">{passwordErrorMessage}</p>
-                )}
-              </Form.Group>
-              <Row>
-                <Col>
-                  <Button variant="primary" type="submit">
-                    "Log In"
-                  </Button>
-                </Col>
-                <Col>
-                  <Form.Text className="text-muted">New here?</Form.Text>
-                </Col>
-              </Row>
-            </Form>
-          </>
-        </Jumbotron>
-      </div>
+        <div className="flex m-auto flex-col p-6 gap-5 bg-primary-800 sm:rounded-8 z-10 sm:w-400 w-full">
+            <div className="flex flex-col gap-4">
+                <p>Testing</p>
+            </div>
+        </div>
     );
   }
 }
