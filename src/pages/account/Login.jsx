@@ -82,7 +82,7 @@ class Login extends Component {
     });
 
     return (
-        <div id="contianer" className="m-h-screen flex items-center justify-center">
+        <div id="contianer" className="h-screen flex items-center justify-center">
             <LogoLarge />
             <div className="flex items-center">
             </div>

@@ -12,10 +12,10 @@ export default class LandingPage extends Component {
   render() {
     return (
       <>
-        <div className="grid grid-cols-2 divide-y">
+        <div className="md:grid md:grid-cols-2 md:divide-y">
           {/* LEFT */}
-          <div className="w-full h-80 m-6 gap-5 bg-primary-800 sm:rounded-8 flex justify-center items-center">
-            <IconLarge width={400} height={800}/>
+          <div className=" flex justify-center items-center hidden md:flex w-full h-100 m-6 gap-5 bg-primary-800 sm:rounded-8 flex justify-center items-center">
+            <IconLarge width={400} height={800} />
           </div>
 
           {/* RIGHT */}
