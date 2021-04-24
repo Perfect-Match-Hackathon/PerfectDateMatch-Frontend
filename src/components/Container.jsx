@@ -6,9 +6,6 @@ export default class Container extends Component {
       <>
         <div
           className="grid w-full h-full"
-          style={{
-            gridTemplateRows: "1fr auto 1fr",
-          }}
         >
           {this.props.children}
         </div>

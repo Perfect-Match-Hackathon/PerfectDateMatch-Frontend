@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { Redirect } from "react-router-dom";
+import { ReactComponent as LogoLarge } from "../../assets/logo-large.svg";
 
 import { authenticate, validate, UserContext } from "../../utils";
 
@@ -81,9 +82,9 @@ class Login extends Component {
     });
 
     return (
-        <div className="flex m-auto flex-col p-6 gap-5 bg-primary-800 sm:rounded-8 z-10 sm:w-400 w-full">
-            <div className="flex flex-col gap-4">
-                <p>Testing</p>
+        <div id="contianer" className="m-h-screen flex items-center justify-center">
+            <LogoLarge />
+            <div className="flex items-center">
             </div>
         </div>
     );

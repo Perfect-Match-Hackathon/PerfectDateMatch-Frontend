@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import Container from "./components/Container";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
-import Login from "./pages/account/Login";
+import LandingPage from "./pages/landingpage/LandingPage";
 
 function App() {
   return (
@@ -9,11 +9,8 @@ function App() {
       <Router>
         <Container>
           <Switch>
-            <Route path="/login">
-              <Login />
-            </Route>
             <Route path="/">
-              <p>pog</p>
+              <LandingPage />
             </Route>
           </Switch>
         </Container>
