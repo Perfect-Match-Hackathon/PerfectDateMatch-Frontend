@@ -1,8 +1,8 @@
 import { Component } from "react";
-import { Redirect, Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { ReactComponent as LogoLarge } from "../../assets/logo-large.svg";
 
-import { authenticate, validate, UserContext } from "../../utils";
+import { authenticate, validateSignIn, UserContext } from "../../utils";
 
 class Login extends Component {
   static userContext = UserContext;
@@ -15,6 +15,7 @@ class Login extends Component {
       email: "",
       password: "",
       errors: [],
+      redirect: "",
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -25,7 +26,7 @@ class Login extends Component {
     console.log(event);
     const { value, name } = event.target;
 
-    console.log(value, name)
+    console.log(value, name);
     this.setState({
       [name]: value,
       errors: [],
@@ -37,7 +38,7 @@ class Login extends Component {
 
     if (this.state.errors.length > 0) return;
 
-    const _errors = validate(this.state.email, this.state.password);
+    const _errors = validateSignIn(this.state.email, this.state.password);
 
     if (_errors.length > 0) {
       this.setState({
@@ -47,9 +48,17 @@ class Login extends Component {
       return;
     }
 
-    authenticate(this.state.email, this.state.password)
-      .then(() => console.log("Success"))
-      .catch((e) => {
+    return authenticate(
+      this.state.email,
+      this.state.password,
+      () => {
+        console.log("authenticated");
+        console.log("attempting to redirect");
+        this.setState({
+          redirect: "/app",
+        });
+      },
+      () => {
         this.setState({
           errors: [
             {
@@ -62,17 +71,25 @@ class Login extends Component {
             },
           ],
         });
-      });
+      }
+    );
   }
 
   render() {
     // eslint-disable-next-line
     const { currentUser, isLoggedIn } = Login.userContext;
+    //? if attempting to reroute
+    if (this.state.redirect) {
+      return <Redirect to={this.state.redirect} />;
+    }
 
     //? If Logged In;
     if (isLoggedIn) {
-      return <Redirect to="/"></Redirect>;
+      this.setState({
+        redirect: "/app",
+      });
     }
+
 
     var emailErrorMessage;
     var passwordErrorMessage;
@@ -87,7 +104,7 @@ class Login extends Component {
         <div className="mb-4">
           <LogoLarge className="mx-auto mb-8" />
           <form onSubmit={this.handleSubmit}>
-            <div class="form__group field mb-4">
+            <div className="form__group field mb-4">
               <input
                 type="email"
                 className="form__field"
@@ -99,7 +116,7 @@ class Login extends Component {
                 onChange={this.handleInputChange}
                 required
               />
-              <label for="email" class="form__label">
+              <label htmlFor="email" className="form__label">
                 Email address
               </label>
               {emailErrorMessage && (
@@ -107,7 +124,7 @@ class Login extends Component {
               )}
             </div>
 
-            <div class="form__group field">
+            <div className="form__group field">
               <input
                 type="password"
                 className="form__field"
@@ -119,7 +136,7 @@ class Login extends Component {
                 onChange={this.handleInputChange}
                 required
               />
-              <label for="Password" class="form__label">
+              <label htmlFor="Password" className="form__label">
                 Password
               </label>
               {passwordErrorMessage && (
@@ -134,9 +151,7 @@ class Login extends Component {
               SIGN IN
             </button>
           </form>
-          <div className="flex justify-center items-center">
-            <p className="mt-4 text-white">New to DateMatch? <Link to="/register" className="link"><u>Create an account</u></Link></p>
-          </div>
+          {this.props.children}
         </div>
       </div>
     );
