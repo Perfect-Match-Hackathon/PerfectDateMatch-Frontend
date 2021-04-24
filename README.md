@@ -10,8 +10,8 @@
 
 <p align="center">
 		<img src="https://img.shields.io/badge/React%20Version-%5E17.0.1-lightgrey">
-		<img src="https://img.shields.io/github/package-json/v/Perfect-Match-Hackathon/PerfectDateMatch-Frontend/master?label=Master%20version&color=blueviolet">
-		<img src="https://img.shields.io/github/package-json/v/Perfect-Match-Hackathon/PerfectDateMatch-Frontend/next?label=Version&color=lightgrey">
+		<img src="https://img.shields.io/github/package-json/v/Perfect-Match-Hackathon/PerfectDateMatch-Frontend/master?label=Stable%20Version&color=blueviolet">
+		<img src="https://img.shields.io/github/package-json/v/Perfect-Match-Hackathon/PerfectDateMatch-Frontend/next?label=Next Version&color=lightgrey">
 
 </p>
 
