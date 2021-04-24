@@ -25,12 +25,13 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "react-tinder-card": "^1.4.0",
+    "serve": "^11.3.2",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
     "build:style": "tailwind build src/styles/index.css -o src/styles/tailwind.css",
-    "start": "node server.js",
+    "start": "serve -s build",
     "dev": "craco start",
     "build": "craco build",
     "test": "craco test",
