@@ -28,7 +28,8 @@ class App extends Component {
   }
 
   async getNewData() {
-    const userToken = this.props.token;
+    const { userToken } = this.context;
+    console.log(`App Fired`, userToken["i"]);
 
     return axios
       .get(`https://perfectmatchbackend.herokuapp.com/collection/dates/`, {

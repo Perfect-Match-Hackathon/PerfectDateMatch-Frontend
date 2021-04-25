@@ -90,7 +90,7 @@ export const UserProvider = ({ children }) => {
     firebase.auth().onAuthStateChanged((user) => {
       setCurrentUser(user);
       if (user) {
-        console.log("logged");
+        console.log("UserProvider Fired", user.getIdToken())
         setUserToken(user.getIdToken());
       }
       return user ? setIsLoggedIn(true) : setIsLoggedIn(false);
