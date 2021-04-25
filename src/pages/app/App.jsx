@@ -143,6 +143,7 @@ class App extends Component {
   }
 
   async componentDidMount() {
+    console.log(process.env.REACT_APP_API_URL)
     const { currentUser, userToken } = this.context;
     const _event = await this.getRandomUnusedEvent();
 
