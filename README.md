@@ -25,11 +25,14 @@
 </p>
 
 ## Demo
-
-// TODO: Record demo, upload demo to youtube (unlisted) & copy link here
-
+https://youtu.be/TAePkx2504o
 ## How To Use
 
+Go to https://perfectdatematch.herokuapp.com/ create an accout / login.
+
+click tick or deny to attend events that are displayed on the screen.<br />
+when you match with someone a notification will appear in the bottom left corner of your screen<br />
+clicking their name will allow you to visit their social media and contact them.
 
 ## Local Instance
 
