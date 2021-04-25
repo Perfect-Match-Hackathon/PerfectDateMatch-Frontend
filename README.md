@@ -6,7 +6,7 @@
 	<p>DateMatch</p>
 </h1>
 
-<h4 align="center">A open source tinder clone created for the <a href="#" target="_blank" alt="Link to skills me">SkillsMe</a> Perfect Match Hackathon</h4>
+<h4 align="center">A open source tinder like application created for the <a href="#" target="_blank" alt="Link to skills me">SkillsMe</a> Perfect Match Hackathon</h4>
 
 <p align="center">
 		<img src="https://img.shields.io/badge/React%20Version-%5E17.0.1-lightgrey">
@@ -30,9 +30,9 @@ https://youtu.be/TAePkx2504o
 
 Go to https://perfectdatematch.herokuapp.com/ create an accout / login.
 
-click tick or deny to attend events that are displayed on the screen.<br />
-when you match with someone a notification will appear in the bottom left corner of your screen<br />
-clicking their name will allow you to visit their social media and contact them.
+Click tick or deny to attend events that are displayed on the screen.<br />
+When you match with someone a notification will appear in the bottom left corner of your screen.<br />
+Clicking their name will allow you to visit their social media and contact them.
 
 ## Local Instance
 
