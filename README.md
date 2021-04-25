@@ -39,7 +39,7 @@ git clone https://github.com/Perfect-Match-Hackathon/PerfectDateMatch-Frontend.g
 and then
 ```
 cd ./frontend && yarn;
-cp .env.example
+cp .env.example .env
 ```
 then fill out the .env providing your firebase information and also the backend URL (make sure to include https:// at the start)
 ```
