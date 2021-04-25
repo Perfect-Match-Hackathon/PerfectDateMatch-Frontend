@@ -23,10 +23,8 @@ class Login extends Component {
   }
 
   handleInputChange(event) {
-    console.log(event);
     const { value, name } = event.target;
 
-    console.log(value, name);
     this.setState({
       [name]: value,
       errors: [],
@@ -77,7 +75,7 @@ class Login extends Component {
 
   render() {
     // eslint-disable-next-line
-    const { currentUser, isLoggedIn } = this.context;
+    const { isLoggedIn } = this.context;
     //? if attempting to reroute
     if (this.state.redirect) {
       return <Redirect to={this.state.redirect} />;

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import firebase from "firebase/app";
 import "firebase/auth";
+import "firebase/database";
 
 /**
  * Initiates firebase application
@@ -50,6 +51,32 @@ export async function authenticate(email, password, callback, errhandler) {
 }
 
 /**
+ *
+ */
+export async function spawnUser(firstName, lastName, uid, socialMedia) {
+  await firebase
+    .database()
+    .ref("users/" + uid)
+    .set({
+      firstName: firstName,
+      lastName: lastName,
+      socialMedia: socialMedia
+    });
+}
+
+/**
+ * triggers a callback when a notification is triggered
+ * @param { string } uid 
+ * @param { function} callback 
+ */
+export async function watchNotifications(uid, callback){ 
+  await firebase
+  .database()
+  .ref(`datematch/${uid}`)
+  .on("child_added", (snapshot) => callback(snapshot));
+}
+
+/**
  * Deauthenicates (logout)
  */
 export async function deauthorize() {
@@ -57,7 +84,7 @@ export async function deauthorize() {
 }
 
 /**
- * UserContext
+ * Handles Authentication for User
  */
 export const UserContext = React.createContext();
 export const UserProvider = ({ children }) => {
@@ -70,13 +97,14 @@ export const UserProvider = ({ children }) => {
     isLoggedIn,
     userToken,
   };
-  
+
   React.useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => {
+    firebase.auth().onAuthStateChanged(async (user) => {
       setCurrentUser(user);
       if (user) {
-        console.log("logged")
-        setUserToken(user.getIdToken());
+        const _token = await user.getIdToken()
+
+        setUserToken(_token);
       }
       return user ? setIsLoggedIn(true) : setIsLoggedIn(false);
     });
