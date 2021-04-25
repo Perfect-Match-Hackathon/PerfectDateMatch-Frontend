@@ -52,7 +52,9 @@ p {
   --tw-text-opacity: 1;
   color: rgba(132, 136, 142, var(--tw-text-opacity));
 }
-
+.mr-15rem {
+  margin-right: 15rem;
+}
 
 @media (min-width: 768px) {
   .image-crop {
@@ -169,4 +171,12 @@ body,
 .form__field:required,
 .form__field:invalid {
   box-shadow: none;
+}
+
+.mr-15rem {
+  margin-right: 15rem;
+}
+
+.bg-custom {
+  background-color: #151A21;
 }

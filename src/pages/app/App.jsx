@@ -3,6 +3,9 @@ import Card from "../../components/Card";
 import { UserContext } from "../../utils";
 import * as axios from "axios";
 
+import { ReactComponent as Tick } from "../../assets/tick.svg";
+import { ReactComponent as Cross } from "../../assets/cross.svg";
+
 class App extends Component {
   static contextType = UserContext;
 
@@ -23,49 +26,63 @@ class App extends Component {
     this.getNewData = this.getNewData.bind(this);
   }
 
-  getNewData() {
+  async getNewData() {
     const { userToken } = this.context;
 
-    axios
-      .get(`https://perfectmatchbackend.herokuapp.com/collection/dates/list`, {
+    console.log(userToken["i"]);
+    return axios
+      .get(`https://perfectmatchbackend.herokuapp.com/collection/dates/`, {
         headers: {
-          Authorization: `Bearer ${userToken}`,
+          Authorization: `Bearer ${userToken["i"]}`,
         },
       })
-      .then((data) => console.log(data.data));
+      .then((data) => (this.state._events = data.data));
   }
 
-  handleYes(event) {
+  async getRandomUnusedEvent(loopstop) {
+    if (!this.state._events && loopstop) return "failed";
+    if (!this.state._events) {
+      await this.getNewData();
+      return this.getRandomUnusedEvent("prevent");
+    }
+
+    var events = Object.keys(this.state._events);
+    var event = this.state._events[
+      events[(events.length * Math.random()) << 0]
+    ];
+
+    console.log(event);
+    console.log(events);
+    return event;
+  }
+
+  async handleYes(event) {
     event.preventDefault();
 
-    const _event = this.getNewData();
+    const _event = await this.getRandomUnusedEvent();
 
     this.setState({
-      url:
-        "https://www.denverpost.com/wp-content/uploads/2017/06/film-despicable-review-adv30-ed62de0a-5c40-11e7-a9f6-7c3296387341.jpg?w=1024&h=661",
-      title: "Despicable Me",
-      location: "Eastern Europe",
+      url: _event.thumbnail,
+      title: _event.title,
+      location: _event.location,
     });
   }
 
-  handleNo(event) {
+  async handleNo(event) {
     event.preventDefault();
-    this.getNewData();
+    const _event = await this.getRandomUnusedEvent();
 
     this.setState({
-      url:
-        "https://archinect.imgix.net/uploads/c2/c2a190686138bc7348491e2ba264b508.jpg?auto=compress%2Cformat",
-      author_url:
-        "https://camo.githubusercontent.com/e23dcbd59a1ffa2e8a0179d6e994f0e03eb3af102480b93a21f3e13bf3e2537c/68747470733a2f2f692e696d6775722e636f6d2f6a53524e6b58482e6a7067",
-      title: "Medieval Dueling",
-      location: "NYC, Centeral Park",
+      url: _event.thumbnail,
+      title: _event.title,
+      location: _event.location,
     });
   }
 
   render() {
     return (
       <>
-        <div className="p-3 flex flex-col items-center">
+        <div className="p-3 flex flex-col mt-8 items-center">
           <Card
             url={this.state.url}
             author_url={this.state.author_url}
@@ -73,8 +90,20 @@ class App extends Component {
             location={this.state.location}
           />
 
-          <button onClick={this.handleYes}>Yes</button>
-          <button onClick={this.handleNo}>No</button>
+          <div className="flex-auto">
+            <button
+              onClick={this.handleYes}
+              className="text-base py-4 px-7 inline-block outline-none focus:ring-4 focus:ring-secondary mr-15rem mt-8 bg-custom"
+            >
+              <Tick />
+            </button>
+            <button
+              onClick={this.handleNo}
+              className="text-base py-4 px-8 inline-block outline-none focus:ring-4 focus:ring-secondary bg-custom"
+            >
+              <Cross />
+            </button>
+          </div>
         </div>
       </>
     );

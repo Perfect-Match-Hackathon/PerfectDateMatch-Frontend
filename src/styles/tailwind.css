@@ -83845,3 +83845,11 @@ body,
     --tw-backdrop-sepia: sepia(100%);
   }
 }
+
+.mr-15rem {
+  margin-right: 15rem;
+}
+
+.bg-custom {
+  background-color: #151A21;
+}
