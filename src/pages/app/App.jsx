@@ -13,23 +13,23 @@ class App extends Component {
     super(props);
 
     this.state = {
-      url:
-        "https://archinect.imgix.net/uploads/c2/c2a190686138bc7348491e2ba264b508.jpg?auto=compress%2Cformat",
+      url: "",
       author_url:
         "https://camo.githubusercontent.com/e23dcbd59a1ffa2e8a0179d6e994f0e03eb3af102480b93a21f3e13bf3e2537c/68747470733a2f2f692e696d6775722e636f6d2f6a53524e6b58482e6a7067",
-      title: "Medieval Dueling",
-      location: "NYC, Centeral Park",
+      title: "",
+      location: "",
+      id: null,
     };
 
     this.handleYes = this.handleYes.bind(this);
     this.handleNo = this.handleNo.bind(this);
     this.getNewData = this.getNewData.bind(this);
+    this.componentDidMount = this.componentDidMount.bind(this);
   }
 
   async getNewData() {
-    const { userToken } = this.context;
+    const userToken = this.props.token;
 
-    console.log(userToken["i"]);
     return axios
       .get(`https://perfectmatchbackend.herokuapp.com/collection/dates/`, {
         headers: {
@@ -47,17 +47,49 @@ class App extends Component {
     }
 
     var events = Object.keys(this.state._events);
-    var event = this.state._events[
-      events[(events.length * Math.random()) << 0]
-    ];
+    var i = (events.length * Math.random()) << 0;
+    var event = this.state._events[events[i]];
 
-    console.log(event);
-    console.log(events);
+    event.id = events[i];
+
     return event;
   }
 
   async handleYes(event) {
     event.preventDefault();
+    const userToken = this.props.token;
+
+    await axios.post(
+      `https://perfectmatchbackend.herokuapp.com/collection/dates/response/${this.state.id}/true`,
+      {
+        headers: {
+          Authorization: `Bearer ${userToken["i"]}`,
+        },
+      }
+    );
+
+    const _event = await this.getRandomUnusedEvent();
+
+    this.setState({
+      url: _event.thumbnail,
+      title: _event.title,
+      location: _event.location,
+      id: _event.id,
+    });
+  }
+
+  async handleNo(event) {
+    event.preventDefault();
+    const { userToken } = this.context;
+
+    await axios.post(
+      `https://perfectmatchbackend.herokuapp.com/collection/dates/response/${this.state.id}/false`,
+      {
+        headers: {
+          Authorization: `Bearer ${userToken["i"]}`,
+        },
+      }
+    );
 
     const _event = await this.getRandomUnusedEvent();
 
@@ -68,14 +100,14 @@ class App extends Component {
     });
   }
 
-  async handleNo(event) {
-    event.preventDefault();
+  async componentDidMount() {
     const _event = await this.getRandomUnusedEvent();
 
     this.setState({
       url: _event.thumbnail,
       title: _event.title,
       location: _event.location,
+      id: _event.id,
     });
   }
 
@@ -92,16 +124,16 @@ class App extends Component {
 
           <div className="flex-auto">
             <button
-              onClick={this.handleYes}
-              className="text-base py-4 px-7 inline-block outline-none focus:ring-4 focus:ring-secondary mr-15rem mt-8 bg-custom"
-            >
-              <Tick />
-            </button>
-            <button
               onClick={this.handleNo}
-              className="text-base py-4 px-8 inline-block outline-none focus:ring-4 focus:ring-secondary bg-custom"
+              className="text-base py-4 px-8 inline-block outline-none focus:ring-4 focus:ring-secondary bg-custom mr-15rem mt-8"
             >
               <Cross />
+            </button>
+            <button
+              onClick={this.handleYes}
+              className="text-base py-4 px-8 inline-block outline-none focus:ring-4 focus:ring-secondary bg-custom"
+            >
+              <Tick />
             </button>
           </div>
         </div>

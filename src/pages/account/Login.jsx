@@ -23,10 +23,8 @@ class Login extends Component {
   }
 
   handleInputChange(event) {
-    console.log(event);
     const { value, name } = event.target;
 
-    console.log(value, name);
     this.setState({
       [name]: value,
       errors: [],
@@ -53,10 +51,10 @@ class Login extends Component {
       this.state.password,
       () => {
         console.log("authenticated");
-        console.log("attempting to redirect");
-        this.setState({
-          redirect: "/app",
-        });
+          console.log("attempting to redirect");
+          this.setState({
+            redirect: "/app",
+          });
       },
       () => {
         this.setState({
@@ -77,9 +75,10 @@ class Login extends Component {
 
   render() {
     // eslint-disable-next-line
-    const { currentUser, isLoggedIn } = this.context;
+    const { isLoggedIn } = this.context;
     //? if attempting to reroute
     if (this.state.redirect) {
+      // wait 3 seconds before redirect, so the token doesn't get set during next pages RENDER()
       return <Redirect to={this.state.redirect} />;
     }
 
@@ -89,7 +88,6 @@ class Login extends Component {
         redirect: "/app",
       });
     }
-
 
     var emailErrorMessage;
     var passwordErrorMessage;

@@ -2,6 +2,7 @@ export {
   attachAuthListener,
   authenticate,
   createNewUser,
+  spawnUser,
   deauthorize,
   init,
   UserContext,

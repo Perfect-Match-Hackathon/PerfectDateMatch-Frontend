@@ -2,7 +2,12 @@ import { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { ReactComponent as LogoLarge } from "../../assets/logo-large.svg";
 
-import { createNewUser, validateSignUp, UserContext } from "../../utils";
+import {
+  createNewUser,
+  validateSignUp,
+  UserContext,
+  spawnUser,
+} from "../../utils";
 
 class Register extends Component {
   static contextType = UserContext;
@@ -16,6 +21,7 @@ class Register extends Component {
       password: "",
       confirmPassword: "",
       errors: [],
+      redirect: "/app",
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -23,10 +29,8 @@ class Register extends Component {
   }
 
   handleInputChange(event) {
-    console.log(event);
     const { value, name } = event.target;
 
-    console.log(value, name);
     this.setState({
       [name]: value,
       errors: [],
@@ -55,13 +59,14 @@ class Register extends Component {
     }
 
     createNewUser(this.state.email, this.state.password, (userCredential) => {
-      var user = userCredential.user;
-      console.log(`user: `, { user });
-      console.log(`userCredential: `, { userCredential });
+      spawnUser(
+        this.state.firstName,
+        this.state.lastName,
+        userCredential.user.uid,
+        this.state.socialMedia
+      );
 
-      const { currentUser, isLoggedIn } = this.context;
-      console.log(`Register`, { currentUser, isLoggedIn });
-      return <Redirect push to="/app"></Redirect>;
+      return <Redirect to={this.state.redirect} />;
     });
   }
 
@@ -77,7 +82,7 @@ class Register extends Component {
 
     //? If Logged In;
     if (isLoggedIn) {
-      return <Redirect push to="/app"></Redirect>;
+      return <Redirect push to="/app" />;
     }
 
     var emailErrorMessage;
@@ -85,10 +90,18 @@ class Register extends Component {
     var firstNameErrorMessage;
     var passwordErrorMessage;
     var confirmPasswordErrorMessage;
+    var socialMediaErrorMessage;
 
     this.state.errors.forEach((error) => {
       if (error.field === "password") passwordErrorMessage = error.message;
       else if (error.field === "email") emailErrorMessage = error.message;
+      else if (error.field === "confirmPassword")
+        passwordErrorMessage = error.message;
+      else if (error.field === "socialMedia")
+        socialMediaErrorMessage = error.message;
+      else if (error.field === "firstName")
+        firstNameErrorMessage = error.message;
+      else if (error.field === "lastName") lastNameErrorMessage = error.message;
     });
 
     return (
@@ -196,11 +209,31 @@ class Register extends Component {
               )}
             </div>
 
+            <div className="form__group field">
+              <input
+                type="text"
+                className="form__field"
+                placeholder="socialMedia"
+                name="socialMedia"
+                id="socialMedia"
+                autoComplete="off"
+                value={this.state.socialMedia}
+                onChange={this.handleInputChange}
+                required
+              />
+              <label htmlFor="socialMedia" className="form__label">
+                Social Media URL
+              </label>
+              {socialMediaErrorMessage && (
+                <p className="error">{socialMediaErrorMessage}</p>
+              )}
+            </div>
+
             <button
               type="submit"
               className="flex mx-auto outline-none bg-accent hover:bg-accent-hover text-white disabled:text-primary font-bold py-3 px-14 mt-8 rounded-lg font-base"
             >
-              SIGN IN
+              SIGN UP
             </button>
           </form>
           {this.props.children}
