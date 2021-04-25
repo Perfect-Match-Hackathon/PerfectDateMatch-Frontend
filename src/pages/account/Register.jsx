@@ -77,22 +77,22 @@ class Register extends Component {
   }
 
   render() {
-    //eslint-disable-next-line
-    const { currentUser, isLoggedIn } = this.context;
+    const {  isLoggedIn } = this.context;
 
     //? If Logged In;
     if (isLoggedIn) {
       return <Redirect push to="/app" />;
     }
 
-    var emailErrorMessage;
-    var lastNameErrorMessage;
-    var firstNameErrorMessage;
-    var passwordErrorMessage;
-    var confirmPasswordErrorMessage;
-    var socialMediaErrorMessage;
+    var emailErrorMessage,
+      lastNameErrorMessage,
+      firstNameErrorMessage,
+      passwordErrorMessage,
+      confirmPasswordErrorMessage,
+      socialMediaErrorMessage;
 
     this.state.errors.forEach((error) => {
+      // Switch statement? Never heard of it; (TODO: change to switch statement when have time)
       if (error.field === "password") passwordErrorMessage = error.message;
       else if (error.field === "email") emailErrorMessage = error.message;
       else if (error.field === "confirmPassword")

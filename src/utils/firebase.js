@@ -65,6 +65,18 @@ export async function spawnUser(firstName, lastName, uid, socialMedia) {
 }
 
 /**
+ * triggers a callback when a notification is triggered
+ * @param { string } uid 
+ * @param { function} callback 
+ */
+export async function watchNotifications(uid, callback){ 
+  await firebase
+  .database()
+  .ref(`datematch/${uid}`)
+  .on("child_added", (snapshot) => callback(snapshot));
+}
+
+/**
  * Deauthenicates (logout)
  */
 export async function deauthorize() {
@@ -87,11 +99,12 @@ export const UserProvider = ({ children }) => {
   };
 
   React.useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => {
+    firebase.auth().onAuthStateChanged(async (user) => {
       setCurrentUser(user);
       if (user) {
-        console.log("UserProvider Fired", user.getIdToken())
-        setUserToken(user.getIdToken());
+        const _token = await user.getIdToken()
+
+        setUserToken(_token);
       }
       return user ? setIsLoggedIn(true) : setIsLoggedIn(false);
     });

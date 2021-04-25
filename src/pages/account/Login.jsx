@@ -75,7 +75,7 @@ class Login extends Component {
 
   render() {
     // eslint-disable-next-line
-    const { currentUser, isLoggedIn } = this.context;
+    const { isLoggedIn } = this.context;
     //? if attempting to reroute
     if (this.state.redirect) {
       return <Redirect to={this.state.redirect} />;
