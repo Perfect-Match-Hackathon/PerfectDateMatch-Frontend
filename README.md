@@ -30,15 +30,21 @@
 
 ## How To Use
 
-// TODO: write short introduction to application and instructions on how to use (with screenshots)
-
-## Key Features
-
-// TOOD: Once finished, relay all key features into this area.
 
 ## Local Instance
 
-// TODO: Once finished, write how to get a local instance up and running (dont forget firebase)
+```sh
+git clone https://github.com/Perfect-Match-Hackathon/PerfectDateMatch-Frontend.git ./frontend
+```
+and then
+```
+cd ./frontend && yarn;
+cp .env.example
+```
+then fill out the .env providing your firebase information and also the backend URL (make sure to include https:// at the start)
+```
+yarn start
+```
 
 ## License
 
